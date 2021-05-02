@@ -11,11 +11,11 @@ Variables
   --clr-primary-3: hsl(205, 72%, 37%);
   --clr-primary-4: hsl(205, 63%, 48%);
   /* primary/main color */
-  --clr-primary-5: hsl(205, 78%, 60%);
+  --clr-primary-5: hsl(252deg 87% 64%);
   /* lighter shades of primary color */
   --clr-primary-6: hsl(205, 89%, 70%);
   --clr-primary-7: hsl(205, 90%, 76%);
-  --clr-primary-8: hsl(205, 86%, 81%);
+  --clr-primary-8: hsl(252deg 90% 62%);
   --clr-primary-9: hsl(205, 90%, 88%);
   --clr-primary-10: hsl(205, 100%, 96%);
   /* darkest grey - used for headings */
@@ -30,7 +30,7 @@ Variables
   --clr-grey-8: hsl(210, 31%, 80%);
   --clr-grey-9: hsl(212, 33%, 89%);
   --clr-grey-10: hsl(210, 36%, 96%);
-  --clr-white: #fff;
+  --clr-white: var(--clr-white);
   --clr-red-dark: hsl(360, 67%, 44%);
   --clr-red-light: hsl(360, 71%, 66%);
   --clr-green-dark: hsl(125, 67%, 44%);
@@ -39,6 +39,7 @@ Variables
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
+  --radius20: 20px;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
@@ -60,8 +61,8 @@ Global Styles
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: var(--clr-grey-10);
-  color: var(--clr-grey-1);
+  background: var(--clr-white);
+  color: #000;
   line-height: 1.5;
   font-size: 0.875rem;
 }
@@ -145,8 +146,8 @@ p {
 .section-center {
   width: 90vw;
   margin: 0 auto;
-  max-width: 35rem;
-  margin-top: 8rem;
+  max-width: 40rem;
+  margin-top: 3rem;
 }
 @media screen and (min-width: 992px) {
   .section-center {
@@ -165,7 +166,7 @@ Grocery List
 */
 .section-center {
   background: var(--clr-white);
-  border-radius: var(--radius);
+  border-radius: var(--radius20);
   box-shadow: var(--light-shadow);
   transition: var(--transition);
   padding: 2rem;
@@ -228,13 +229,13 @@ Grocery List
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   cursor: pointer;
-  content: var(--clr-primary-5);
+  color: #fff;
   transition: var(--transition);
   font-size: 0.85rem;
 }
 .submit-btn:hover {
   background: var(--clr-primary-5);
-  color: var(--clr-white);
+  color: #fff;
 }
 
 .grocery-container {
@@ -246,18 +247,22 @@ Grocery List
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.5rem;
-  transition: var(--transition);
+  transition: all ease-in-out 0.3s;
   padding: 0.25rem 1rem;
   border-radius: var(--radius);
   text-transform: capitalize;
 }
 .grocery-item:hover {
-  color: var(--clr-grey-5);
-  background: var(--clr-grey-10);
+  color: var(--clr-white);
+  background: hsl(252deg 90% 62%);
+  transform: scale(1.03);
 }
 .grocery-item:hover .title {
-  color: var(--clr-grey-5);
+  color: #fff;
 }
+
+
+
 .title {
   margin-bottom: 0;
   color: var(--clr-grey-1);
@@ -287,20 +292,22 @@ Grocery List
 }
 .clear-btn {
   text-transform: capitalize;
-  width: 10rem;
-  height: 1.5rem;
+  width: 8rem;
+  height: 2rem;
   display: grid;
   align-items: center;
-  background: transparent;
+  background: var(--clr-primary-8);
   border-color: transparent;
-  color: var(--clr-red-light);
+  color: #fff;
   margin: 0 auto;
   font-size: 0.85rem;
   letter-spacing: var(--spacing);
   cursor: pointer;
   transition: var(--transition);
   margin-top: 1.25rem;
+  border-radius: 4px;
 }
 .clear-btn:hover {
-  color: var(--clr-red-dark);
+  color: #fff;
+  background: var(--clr-primary-5);
 }
