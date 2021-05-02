@@ -12,14 +12,13 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!name){
-      // display alert
       showAlert(true, 'danger', 'please enter value')
     } else if(name && isEditing){
       // work on edit functionality
     } else{
       showAlert(true, 'success', 'item added to the list')
       const newItem = {id: new Date().getTime().toString(), title: name};
-      setList(...list, newItem);
+      setList([...list, newItem]);
       setName('');
     }
 
@@ -34,10 +33,15 @@ function App() {
     setList([]);
   }
 
+  const removeItem = (id) => {
+    showAlert(true, 'danger', 'Item removed');
+    setList(list.filter((item) => item.id !== id));
+  }
+
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>Grocery Application</h3>
         <div className="form-control">
           <input
@@ -54,7 +58,7 @@ function App() {
       </form>
       {list.length > 0 && (
       <div className="geocery-container">
-        <List items={list}/>
+        <List items={list} removeItem={removeItem}/>
         <button className="clear-btn" onClick={clearList}>Clear Items</button>
       </div>
       )}
